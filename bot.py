@@ -9,7 +9,7 @@ bot=telebot.TeleBot(BOT_TOKEN)
 
 style="basic"
 
-@bot.message_handler(commands=['basic','art', '3d', 'photo'])
+@bot.message_handler(commands=['basic','art', '3d', 'photo', 'logo'])
 
 def switch_style(message):
     global style
@@ -21,8 +21,9 @@ def switch_style(message):
          style="photo"
     elif message.text == "/art":
          style="art"
+    elif message.text == "/logo":
+         style="logo"
     bot.send_message(message.chat.id,"Стиль изменен на " + style)
-
 
 @bot.message_handler(commands=['start'])
 
