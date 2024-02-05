@@ -1,62 +1,56 @@
 import telebot
 import sdxl
 import translate
+import re
 
 BOT_TOKEN = ""
 
 bot=telebot.TeleBot(BOT_TOKEN)
 
+style="basic"
+
+@bot.message_handler(commands=['basic','art', '3d', 'photo'])
+
+def switch_style(message):
+    global style
+    if message.text == "/basic":
+         style="basic"
+    elif message.text == "/3d":
+         style="3d"
+    elif message.text == "/photo":
+         style="photo"
+    elif message.text == "/art":
+         style="art"
+    bot.send_message(message.chat.id,"Стиль изменен на " + style)
+
+
 @bot.message_handler(commands=['start'])
 
-def ru_detector(s):
-    chars = set('абвгдеёжзиклмнопрстуфхцшщэюяъь')
-    if any((c in chars) for c in s):
-       return True
-    else:
-       return False
-
-
 def start_message(message):
-  bot.send_message(message.chat.id,"Привет! пиши что надо нарисовать")
+    bot.send_message(message.chat.id,"Привет! Пиши промт. Стиль можно переключить в меню бота")
 
 
 @bot.message_handler(content_types=["text"])
+def get_a_prompt(message):
 
-def repeat_all_messages(message):
+    # ищем в тексте :количество_повторений, если не найдено, повторяем один раз
+    m = re.search(r'(?<=:)\w+', message.text)
+    if m is None:
+         repeats=1
+    else:
+         repeats=int(m.group(0))
 
-    ## русский переводим английский пропускаем
-    if ru_detector(message.text):
+    # русский промт переводим, английский пропускаем так
+    if translate.ru_detector(message.text):
        english_text = translate.ru2en(message.text)
-       #bot.send_message(message.chat.id, "Запрос на русском! Вот перевод твоего запроса на английcкий: " + english_text)
     else:
        english_text = message.text
-       #bot.send_message(message.chat.id, "Запрос на английском: " + english_text)
 
-    bot.send_message(message.chat.id, "Генерирую картинку, подожди 20 секунд...")
-
-    style = "3d"
-
-    with open(sdxl.txt2img(str(message.chat.id),english_text,style), 'rb') as f:
-         contents = f.read()
-    bot.send_photo(message.chat.id, contents)
-
-    style = "photo"
-
-    with open(sdxl.txt2img(str(message.chat.id),english_text,style), 'rb') as f:
-         contents = f.read()
-    bot.send_photo(message.chat.id, contents)
-
-    style = "art"
-
-    with open(sdxl.txt2img(str(message.chat.id),english_text,style), 'rb') as f:
-       contents = f.read()
-    bot.send_photo(message.chat.id, contents)
-
-    style = "basic"
-
-    with open(sdxl.txt2img(str(message.chat.id),english_text,style), 'rb') as f:
-       contents = f.read()
-    bot.send_photo(message.chat.id, contents)
-
+    # генерируем картинку с нужным стилем и нужным количеством повторений
+    for i in range(repeats):
+          bot.send_message(message.chat.id, "Генерирую картинку №" + str(i+1) + " из " + str(repeats) + " в стиле " + style + ", подождите 20 секунд...")
+          with open(sdxl.txt2img(str(message.chat.id),english_text,style), 'rb') as f:
+               contents = f.read()
+          bot.send_photo(message.chat.id, contents)
 
 bot.infinity_polling()
