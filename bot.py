@@ -2,7 +2,7 @@ import telebot
 import sdxl
 import translate
 
-BOT_TOKEN = "6942638415:AAGvG7fnNqq3bZUoVvogL6QgOTHrZXqRiiI"
+BOT_TOKEN = ""
 
 bot=telebot.TeleBot(BOT_TOKEN)
 
