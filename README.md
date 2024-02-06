@@ -18,15 +18,15 @@
 
 A simple telegram bot for generating images using Stable Diffusion (SDXL) AI models
 
-The bot generates a 1024x 1024 image in response to the text entered by the user (promt).
-Promts in English are processed directly, and the neural network machine translation model Opus MT is used to translate promts from Russian to English
+The bot generates a 1024x 1024 image in response to the text entered by the user (prompt).
+Prompts in English are processed directly, and the neural network machine translation model Opus MT is used to translate prompts from Russian to English
 
-GPU (Cuda) is used for generation. At the first launch, models with hugginface (several tens of GB) will be automatically loaded
+GPU (Cuda) is used for generation. At the first launch, models from hugginface.ai (~25 GB) will be automatically downloaded
 
-The bot generates images in different styles specified by the model used and the additions to the bot, switching the generation style using the commands
+The bot generates images in different styles specified by the model used and the prompt expansions, switching the generation style using the commands
 /basic, /photo, /art, /3d, /logo
 
-You can generate a series of images at once, one by one, by specifying at the end of the promo the number of repetitions after the characters :: (for example, "cat::10"). During the generation of a series, you can switch the style using the appropriate commands.
+You can generate a series of images for the single prompt by specifying at the end of the prompt the number of repetitions after the characters :: (for example, "cat::10"). During the generation of a series, you can switch the style using the appropriate commands.
 
 You can end the series after the current image with the /stop command
 
