@@ -1,6 +1,6 @@
-
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
+# проверяем, надо ли переводить промт (есть ли символы на русском)
 def ru_detector(s):
     chars = set('абвгдеёжзиклмнопрстуфхцшщэюяъь')
     if any((c in chars) for c in s):
@@ -8,6 +8,7 @@ def ru_detector(s):
     else:
        return False
 
+# переводим с русского на английский
 def ru2en(ru_text):
     model_name = 'Helsinki-NLP/opus-mt-ru-en'
     tokenizer = AutoTokenizer.from_pretrained(model_name)
