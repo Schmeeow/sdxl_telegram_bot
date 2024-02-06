@@ -5,39 +5,43 @@ import re
 
 BOT_TOKEN = ""
 
-
 bot=telebot.TeleBot(BOT_TOKEN)
 
 style="basic"
 need_to_stop = False
 
-@bot.message_handler(commands=['basic','art', '3d', 'photo', 'logo','stop'])
+@bot.message_handler(commands = ['basic','art', '3d', 'photo', 'logo','stop'])
 
 def command_processor(message):
     global style
     global need_to_stop
+
+    # устанавливаем стиль
     if message.text in ['/basic','/3d','/art','/photo','/logo']:
        style = message.text[1:]
        bot.send_message(message.chat.id,"Стиль изменен на " + style)
+
+    # или флаг для завершения генерации
     elif message.text == "/stop":
        need_to_stop = True
        bot.send_message(message.chat.id,"Генерация остановится по завершении создания текущей картинки")
 
-@bot.message_handler(commands=['start'])
+
+@bot.message_handler(commands = ['start'])
 
 def start_message(message):
     bot.send_message(message.chat.id,"Привет! Пиши промт. Стиль можно переключить в меню бота. Количество повторений (XX) можно указать, дописав ::XX в конце промта")
 
 
-@bot.message_handler(content_types=["text"])
+@bot.message_handler(content_types = ["text"])
 def prompt_processor(message):
 
     # ищем в тексте ::количество_повторений, если не найдено, повторяем один раз
     m = re.search(r'(?<=::)\w+', message.text)
     if m is None:
-         repeats=1
+         repeats = 1
     else:
-         repeats=int(m.group(0))
+         repeats = int(m.group(0))
 
     # убираем количество повторений из промта
     message.text = message.text.split('::', 1)[0]
@@ -63,3 +67,4 @@ def prompt_processor(message):
           bot.send_photo(message.chat.id, contents)
 
 bot.infinity_polling()
+
