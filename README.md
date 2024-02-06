@@ -5,8 +5,7 @@
 Бот генерирует картинку размером 1024x1024 в ответ на введенный пользователем текст (промт). 
 Промты на английском обрабатываются напрямую, для перевода промтов с русского на английский используется нейросетевая модель машинного перевода Opus MT
 
-Для генерации используется GPU (Cuda). Потребление видеопамяти при генерации - 8-16Gb (никак не оптимизировалось). При первом запуске будут автоматически загружены модели с hugginface (несколько десятков Гб)
-Генерация одного изображения занимает около 30 секунд на GeForce 4060Ti(16Gb)
+Для генерации используется GPU (Cuda). Потребление видеопамяти при генерации - 8-16Gb (никак не оптимизировалось). При первом запуске будут автоматически загружены модели с hugginface (несколько десятков Гб). Генерация одного изображения занимает около 30 секунд на GeForce 4060Ti(16Gb)
  
 Бот генерирует картинки в разных стилях, заданных используемой моделью и дополнениями к промту, переключая стиль генерации по командам
 /basic, /photo, /art, /3d, /logo 
@@ -22,8 +21,7 @@ A simple telegram bot for generating images using Stable Diffusion (SDXL) AI mod
 The bot generates a 1024x 1024 image in response to the text entered by the user (prompt).
 Prompts in English are processed directly, and the neural network machine translation model Opus MT is used to translate prompts from Russian to English
 
-GPU (Cuda) is used for generation. Video memory consumption during generation is 8-16Gb (not optimized in any way). At the first launch, models from hugginface.ai (~25 GB) will be automatically downloaded
-Generating a single image takes about 30 seconds on a GeForce 4060Ti(16Gb)
+GPU (Cuda) is used for generation. Video memory consumption during generation is 8-16Gb (not optimized in any way). At the first launch, models from hugginface.ai (~25 GB) will be automatically downloaded. Generating a single image takes about 30 seconds on a GeForce 4060Ti(16Gb)
 
 The bot generates images in different styles specified by the model used and the prompt expansions, switching the generation style using the commands
 /basic, /photo, /art, /3d, /logo
