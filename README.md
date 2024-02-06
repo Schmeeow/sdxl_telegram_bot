@@ -33,3 +33,6 @@ You can end the series after the current image with the /stop command
 ######################################################################
 
 Список необходимых модулей приведен в requirements.txt
+
+Пример бота - https://t.me/howdoicallthisllamabot (может быть недоступен)
+
