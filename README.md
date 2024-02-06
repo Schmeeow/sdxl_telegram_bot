@@ -2,6 +2,8 @@
 
 Простой телеграм-бот для генерации изображений с помощью AI-моделей Stable Diffusion (SDXL)
 
+БОТ ПРЕДНАЗНАЧЕН ДЛЯ ИНДИВИДУАЛЬНОГО ИСПОЛЬЗОВАНИЯ и не предназначен для одновременной работы с ним нескольких пользователей.
+
 Бот генерирует картинку размером 1024x1024 в ответ на введенный пользователем текст (промт). 
 Промты на английском обрабатываются напрямую, для перевода промтов с русского на английский используется нейросетевая модель машинного перевода Opus MT (качество перевода так себе)
 
@@ -20,6 +22,8 @@ A simple telegram bot for generating images using Stable Diffusion (SDXL) AI mod
 
 The bot generates a 1024x 1024 image in response to the text entered by the user (prompt).
 Prompts in English are processed directly, and the neural network machine translation model Opus MT is used to translate prompts from Russian to English
+
+THE BOT IS DESIGNED FOR INDIVIDUAL USE and is not intended for multiple users to work with it at the same time.
 
 GPU (Cuda) is used for generation. Video memory consumption during generation is 8-16Gb (not optimized in any way). At the first launch, models from hugginface.ai (~25 GB) will be automatically downloaded. Generating a single image takes about 30 seconds on a GeForce 4060Ti(16Gb)
 
