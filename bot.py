@@ -5,6 +5,7 @@ import re
 
 BOT_TOKEN = ""
 
+
 bot=telebot.TeleBot(BOT_TOKEN)
 
 style="basic"
@@ -12,23 +13,15 @@ need_to_stop = False
 
 @bot.message_handler(commands=['basic','art', '3d', 'photo', 'logo','stop'])
 
-def switch_style(message):
+def command_processor(message):
     global style
     global need_to_stop
-    if message.text == "/basic":
-         style="basic"
-    elif message.text == "/3d":
-         style="3d"
-    elif message.text == "/photo":
-         style="photo"
-    elif message.text == "/art":
-         style="art"
-    elif message.text == "/logo":
-         style="logo"
+    if message.text in ['/basic','/3d','/art','/photo','/logo']:
+       style = message.text[1:]
+       bot.send_message(message.chat.id,"Стиль изменен на " + style)
     elif message.text == "/stop":
-         need_to_stop = True
-    bot.send_message(message.chat.id,"Стиль изменен на " + style)
-
+       need_to_stop = True
+       bot.send_message(message.chat.id,"Генерация остановится по завершении создания текущей картинки")
 
 @bot.message_handler(commands=['start'])
 
@@ -37,7 +30,7 @@ def start_message(message):
 
 
 @bot.message_handler(content_types=["text"])
-def get_a_prompt(message):
+def prompt_processor(message):
 
     # ищем в тексте ::количество_повторений, если не найдено, повторяем один раз
     m = re.search(r'(?<=::)\w+', message.text)
@@ -59,9 +52,8 @@ def get_a_prompt(message):
     for i in range(repeats):
 
           global need_to_stop
-
+          # останавливаем генерацию если была команда /stop
           if need_to_stop:
-             bot.send_message(message.chat.id,"Генерация остановлена")
              need_to_stop = False
              break
 
