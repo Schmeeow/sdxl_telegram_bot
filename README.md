@@ -1,4 +1,4 @@
-# sdxl_telegram_bot
+# stable_diffusion_telegram_bot (SDXL)
 
 Простой телеграм-бот для генерации изображений с помощью AI-моделей Stable Diffusion (SDXL)
 
