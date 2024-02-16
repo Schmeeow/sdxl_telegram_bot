@@ -179,8 +179,8 @@ torch.backends.cuda.matmul.allow_tf32 = True  # works only on  nVIdia Ampere and
 def sysinfo(user_id, prompt, style, positive_prompt_final, negative_prompt_final):
     print("USER ID:", user_id)
     print("STYLE:", style)
-    print("MODEL:", styles.STYLES[style]['model'])
-    print("LORA:", styles.STYLES[style]['lora']['name'])
+    print("MODEL:", STYLES[style]['model'])
+    print("LORA:", STYLES[style]['lora']['name'])
     print("POSITIVE:", positive_prompt_final)
     print("NEGATIVE:", negative_prompt_final)
 
@@ -212,8 +212,7 @@ def txt2img(user_id, prompt, style, ratio, steps):
     print("filename: ", image_path + "\n")
     return(image_path)
 
-def img2img(user_id, image_path, style, ratio, steps):
-    importlib.reload(styles) #remove later
+def img2img(user_id, image_path, style, ratio, steps):    
     size = ratio.split(',')
     positive_prompt_final = STYLES[style]['remix_prompt'] + ", " + STYLES[style]['lora']['activation_prompt']
     negative_prompt_final = COMMON_NEGATIVE_PROMPT + STYLES[style]['negative_expansion']
