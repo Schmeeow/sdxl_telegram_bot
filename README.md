@@ -1,41 +1,31 @@
-# stable_diffusion_telegram_bot (SDXL)
+Simple Diffusion Telegram Bot
 
-Простой телеграм-бот для генерации изображений с помощью AI-моделей Stable Diffusion (SDXL)
+Простой телеграм-бот для AI-генерации изображений по английским и русским промтам (перевод Opus MT) на моделях Stable Diffusion (SDXL), вырезания фона на картинках (Bria RMBG) и апскейлинга (Real-ESRGAN)
 
-БОТ ПРЕДНАЗНАЧЕН ДЛЯ ИНДИВИДУАЛЬНОГО ИСПОЛЬЗОВАНИЯ и не предназначен для одновременной работы с ним нескольких пользователей.
-
-Бот генерирует картинку размером 1024x1024 в ответ на введенный пользователем текст (промт). 
-Промты на английском обрабатываются напрямую, для перевода промтов с русского на английский используется нейросетевая модель машинного перевода Opus MT (качество перевода так себе)
-
-Для генерации используется GPU (Cuda). Потребление видеопамяти при генерации - 8-16Gb (никак не оптимизировалось). При первом запуске будут автоматически загружены модели с hugginface (несколько десятков Гб). Генерация одного изображения занимает около 30 секунд на GeForce 4060Ti(16Gb)
- 
-Бот генерирует картинки в разных стилях, заданных используемой базовой моделью, LORA и дополнениями к промту, переключая стиль генерации по командам
-/basic, /photo, /art, /3d, /logo 
-
-Можно сгенерировать сразу серию изображений по одному промту, указав в конце промта количество повторений после символов :: (например "кошка::10"). Во время генерации серии можно переключать стиль с помощью соответствующих команд.
-
-Завершить серию после текущей картинки можно командой /stop
+Бот генерирует картинки в разных стилях, определяемых используемой базовой моделью, LORA и дополнениями к промту (задается для каждого стиля в словаре конфигурации)
+В меню бота настраивается стиль и качество генерации, соотношение сторон для картинки, цвет фона для изоляции. 
+Для генерации используется GPU (Cuda). При первом запуске будут автоматически загружены модели с Hugging Face (несколько десятков Гб). Генерация одного изображения занимает около 30 секунд на GeForce 4060Ti(16Gb)
+Можно сгенерировать сразу серию изображений по одному промту, указав в конце промта количество повторений после символов :: (например "кошка::10"). 
+Во время генерации можно переключать стиль, соотношение сторон и качество с помощью соответствующих команд в настройках.
 
 ###################################################################
 
-A simple telegram bot for generating images using Stable Diffusion (SDXL) AI models
+A simple telegram bot for AI image generation with english and russian prompts (Opus MT translation) on Stable Diffusion (SDXL) models, background removal (Bria RMBG) and upscaling (Real-ESRGAN)
 
-The bot generates a 1024x 1024 image in response to the text entered by the user (prompt).
-Prompts in English are processed directly, and the neural network machine translation model Opus MT is used to translate prompts from Russian to English
-
-THE BOT IS DESIGNED FOR INDIVIDUAL USE and is not intended for multiple users to work with it at the same time.
-
-GPU (Cuda) is used for generation. Video memory consumption during generation is 8-16Gb (not optimized in any way). At the first launch, models from hugginface.ai (~25 GB) will be automatically downloaded. Generating a single image takes about 30 seconds on a GeForce 4060Ti(16Gb)
-
-The bot generates images in different styles specified by the base model and LORA used and the prompt expansions, switching the generation style using the commands
-/basic, /photo, /art, /3d, /logo
-
-You can generate a series of images for the single prompt by specifying at the end of the prompt the number of repetitions after the characters :: (for example, "cat::10"). During the generation of a series, you can switch the style using the appropriate commands.
-
-You can end the series after the current image with the /stop command
+The bot generates images in different styles, determined by the base model used, LORA and additions to the prompts (must be set for each style in the configuration dictionary)
+In the bot menu, the style and quality of generation, the aspect ratio for the image, and the background color for isolated image are configured.
+GPU (Cuda) is used for generation. At the first launch, models with Hugging Face (several tens of GB) will be automatically loaded. Generating a single image takes about 30 seconds on a GeForce 4060Ti(16Gb)
+You can generate a series of images at once by specifying at the end of the prompt the number of repetitions after the characters :: (for example, "cat::10").
+During generation, you can switch the style, aspect ratio and quality using the appropriate commands in the settings.
 
 ######################################################################
 
-Список необходимых модулей приведен в requirements.txt
+LINKS
+https://github.com/Helsinki-NLP/Opus-MT
+https://github.com/chenxwh/cog-RMBG
+https://github.com/xinntao/Real-ESRGAN
 
-Пример бота - https://t.me/howdoicallthisllamabot (может быть недоступен)
+TODO Список необходимых модулей приведен в requirements.txt
+TODO Процесс установки описан в installation.txt
+
+Развернутый бот - https://t.me/simplediffusiontelegrambot (может быть недоступен)
