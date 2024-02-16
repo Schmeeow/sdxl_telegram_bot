@@ -21,6 +21,7 @@ During generation, you can switch the style, aspect ratio and quality using the 
 ######################################################################
 
 LINKS
+
 https://github.com/Helsinki-NLP/Opus-MT
 
 https://github.com/chenxwh/cog-RMBG
