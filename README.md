@@ -22,10 +22,15 @@ During generation, you can switch the style, aspect ratio and quality using the 
 
 LINKS
 https://github.com/Helsinki-NLP/Opus-MT
+
 https://github.com/chenxwh/cog-RMBG
+
 https://github.com/xinntao/Real-ESRGAN
 
+
 TODO Список необходимых модулей приведен в requirements.txt
+
 TODO Процесс установки описан в installation.txt
+
 
 Развернутый бот - https://t.me/simplediffusiontelegrambot (может быть недоступен)
