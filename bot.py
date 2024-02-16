@@ -352,7 +352,6 @@ def text_processor(message):
        repeats = 1
     else:
        repeats = int(m.group(0))
-    price = UNIT_PRICE*repeats
     message.text = message.text.split('::', 1)[0]
     prompt = translate(message.text)
     for i in range(repeats):
@@ -372,7 +371,6 @@ def photo_processor(message):
     save_path = 'temp_' + users[message.chat.id]['mode'] + "_" + uuid.uuid4().hex + '.jpg'
     with open(save_path, 'wb') as f:
         f.write(downloaded_file)
-    price = UNIT_PRICE
     if users[message.chat.id]['mode'] == 'img2img' or users[message.chat.id]['mode'] == 'txt2img':
        users[message.chat.id]['mode'] == 'img2img'
        bot.send_message(message.chat.id, "⌛ Обрабатываю картинку в стиле «" + SETTINGS_MENU['/style']['buttons'][str(users[message.chat.id]['style'])] + "», подождите...")
