@@ -23,8 +23,6 @@ from telebot import types
 
 BOT_TOKEN = " "
 
-ALLOWED_USERS = (11111111,2222222,3333333)
-
 ###################  СТИЛИ ГЕНЕРАЦИИ ####################
 
 COMMON_NEGATIVE_PROMPT = 'duplicate, blurry, disfigured, deformed, poorly drawn, extra limbs, watermark, long neck, elongated body, cropped image, deformed hands, twisted fingers, double image, malformed hands, multiple heads, ugly, poorly drawn hands, missing limb, lousy anatomy, poorly drawn face, mutation, mutated, floating limbs, disconnected limbs, out of focus, bad anatomy, disgusting, extra fingers, gross proportions, missing arms, cloned face, missing legs, tiling, poorly drawn feet, out of frame, blurred, signature, cut off, mutation,painting, mutated hands, bad proportions, skinny, glitchy, double torso, extra arms, extra hands, mangled fingers, missing lips, ugly face, distorted face, extra legs, anime, '
